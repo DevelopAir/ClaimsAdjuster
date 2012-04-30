@@ -10,4 +10,10 @@
 
 @interface CAFirstViewController : UIViewController
 
+<UIPickerViewDataSource, UIPickerViewDelegate>
+
+@property (strong, nonatomic) IBOutlet UITextView *ClaimInfo;
+@property (strong, nonatomic) IBOutlet UIPickerView *ClaimPicker;
+@property (strong, nonatomic) NSArray *ClaimWIP;
+
 @end
