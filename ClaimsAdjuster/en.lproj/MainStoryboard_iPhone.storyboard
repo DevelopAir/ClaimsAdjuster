@@ -1,41 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
     <dependencies>
-        <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller - List-->
-        <scene sceneID="r1T-h8-LpK">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MQ2-JG-xIa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="M5e-BM-Cfv" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Q8V-w6-fod">
-                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="eCg-wC-YXL">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="M5e-BM-Cfv" id="Gz6-cU-1gg"/>
-                            <outlet property="delegate" destination="M5e-BM-Cfv" id="oSQ-QG-tfo"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" title="List" id="3tf-2r-BMv"/>
-                </tableViewController>
-            </objects>
-            <point key="canvasLocation" x="116" y="-326"/>
-        </scene>
         <!--First View Controller - First-->
         <scene sceneID="11">
             <objects>
@@ -49,8 +18,8 @@
                                 <rect key="frame" x="0.0" y="195" width="320" height="216"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <outlet property="dataSource" destination="10" id="aZt-bA-t5W"/>
-                                    <outlet property="delegate" destination="10" id="6Th-la-ink"/>
+                                    <outlet property="dataSource" destination="2" id="tGe-dD-7tL"/>
+                                    <outlet property="delegate" destination="2" id="NFf-Pa-Ozo"/>
                                 </connections>
                             </pickerView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="IOz-5m-eYX">
@@ -60,18 +29,17 @@
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="dq6-Yf-ZJS" id="cMI-34-m5G"/>
+                                </connections>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Claim" image="first" id="7"/>
-                    <connections>
-                        <outlet property="ClaimInfo" destination="IOz-5m-eYX" id="jKn-bb-XnE"/>
-                        <outlet property="ClaimPicker" destination="dq6-Yf-ZJS" id="3yX-8o-Smv"/>
-                    </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="725" y="-284"/>
+            <point key="canvasLocation" x="761" y="-292"/>
         </scene>
         <!--Second View Controller - Second-->
         <scene sceneID="13">
@@ -81,9 +49,26 @@
                     <view key="view" contentMode="scaleToFill" id="17">
                         <rect key="frame" x="0.0" y="20" width="320" height="411"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="E0W-JB-Scb">
+                                <rect key="frame" x="78" y="153" width="165" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Activate Camera">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Photo" id="6"/>
+                    <connections>
+                        <outlet property="ActivateCamera" destination="E0W-JB-Scb" id="Msm-Rv-cag"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="761" y="310"/>
@@ -101,7 +86,7 @@
                     <tabBarItem key="tabBarItem" title="Send" id="AHx-Ys-zzk"/>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="181" y="951"/>
+            <point key="canvasLocation" x="297" y="1191"/>
         </scene>
         <!--View Controller - Notes-->
         <scene sceneID="H36-6t-cFm">
@@ -116,7 +101,7 @@
                     <tabBarItem key="tabBarItem" title="Notes" id="v2f-9b-gWS"/>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="769" y="889"/>
+            <point key="canvasLocation" x="761" y="945"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="15">
@@ -130,7 +115,6 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="M5e-BM-Cfv" kind="relationship" relationship="viewControllers" id="fNX-un-aVu"/>
                         <segue destination="2" kind="relationship" relationship="viewControllers" id="26"/>
                         <segue destination="3" kind="relationship" relationship="viewControllers" id="27"/>
                         <segue destination="M9K-lm-Pq4" kind="relationship" relationship="viewControllers" id="o35-nw-PUh"/>
