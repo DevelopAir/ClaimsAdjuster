@@ -86,8 +86,6 @@
 
 -(IBAction)btnActivateCameraClicked:(id) sender
 {
-    NSLog(@"Got to the buttonPressed routine.");
-    
 	// Create image picker controller
     imagePicker = [[UIImagePickerController alloc] init];
     

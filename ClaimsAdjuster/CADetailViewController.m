@@ -45,7 +45,7 @@ CAAppDelegate *app;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"In CADetailViewController at beginning of viewDidLoad");
+
     self.title = theList.name;
     
     self.nameField.text = self.listItem.name;
@@ -54,11 +54,9 @@ CAAppDelegate *app;
     self.dolField.text = self.listItem.dol;
     
     app = [[UIApplication sharedApplication] delegate]; 
-    NSLog(@"In CADetailViewController at end of viewDidLoad");
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    NSLog(@"Count items in listArray are %d", 3);
     return 3;
 }
 
@@ -120,14 +118,12 @@ CAAppDelegate *app;
 #pragma mark - IBActions
 
 - (void)taskDataChaged:(id)sender {
-    NSLog(@"Beginning of taskDataChaged");
     self.listItem.name = self.nameField.text;
     self.listItem.cause = self.causeField.text;
     self.listItem.policy = self.policyField.text;
 }
 
 -(void)setDol {
-    NSLog(@"In CADetailViewController at beginning of setDol");
     dateSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:nil cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
     
     [dateSheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
@@ -164,7 +160,6 @@ CAAppDelegate *app;
     [dateSheet showInView:self.view];
     
     [dateSheet setBounds:CGRectMake(0,0,320,485)];
-    NSLog(@"In CADetailViewController at ending of setDol");
 }
 
 -(void) cancelDateSet {

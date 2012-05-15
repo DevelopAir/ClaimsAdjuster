@@ -22,9 +22,6 @@
 }
 
 -(IBAction)btnActivateCameraClicked:(id) sender;
-
-- (void)emailImage:(UIImage *)image;
-- (void)btnActivateCameraPressed:(UIButton *)btnActivateCamera;
 - (void)emailImage:(UIImage *)image;
 - (void)didReceiveMemoryWarning;
 
