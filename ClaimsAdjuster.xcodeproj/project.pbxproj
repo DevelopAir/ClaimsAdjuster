@@ -15,9 +15,7 @@
 		E50AB8DE154CB10300920B1D /* CAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E50AB8DD154CB10300920B1D /* CAAppDelegate.m */; };
 		E50AB8E1154CB10300920B1D /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E50AB8DF154CB10300920B1D /* MainStoryboard_iPhone.storyboard */; };
 		E50AB8E4154CB10300920B1D /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E50AB8E2154CB10300920B1D /* MainStoryboard_iPad.storyboard */; };
-		E50AB8E7154CB10300920B1D /* CAFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E50AB8E6154CB10300920B1D /* CAFirstViewController.m */; };
 		E50AB8E9154CB10300920B1D /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = E50AB8E8154CB10300920B1D /* first.png */; };
-		E50AB8EB154CB10300920B1D /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E50AB8EA154CB10300920B1D /* first@2x.png */; };
 		E50AB8EE154CB10300920B1D /* CASecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E50AB8ED154CB10300920B1D /* CASecondViewController.m */; };
 		E50AB8F0154CB10300920B1D /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = E50AB8EF154CB10300920B1D /* second.png */; };
 		E50AB8FA154CB10300920B1D /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E50AB8F9154CB10300920B1D /* SenTestingKit.framework */; };
@@ -25,7 +23,11 @@
 		E50AB8FC154CB10300920B1D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E50AB8CF154CB10300920B1D /* Foundation.framework */; };
 		E50AB904154CB10300920B1D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E50AB902154CB10300920B1D /* InfoPlist.strings */; };
 		E50AB907154CB10300920B1D /* ClaimsAdjusterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E50AB906154CB10300920B1D /* ClaimsAdjusterTests.m */; };
-		E589C752154DBFA10043D9C4 /* Camera.png in Resources */ = {isa = PBXBuildFile; fileRef = E589C751154DBFA10043D9C4 /* Camera.png */; };
+		E5C278F415579085000DFB84 /* XMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C278F315579085000DFB84 /* XMLParser.m */; };
+		E5C278F815579399000DFB84 /* WIPList.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C278F715579398000DFB84 /* WIPList.m */; };
+		E5C278FB15579BD2000DFB84 /* CATableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C278FA15579BD2000DFB84 /* CATableViewController.m */; };
+		E5C278FE15579DE8000DFB84 /* CADetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C278FD15579DE7000DFB84 /* CADetailViewController.m */; };
+		E5C279091557EC34000DFB84 /* Claims.xml in Resources */ = {isa = PBXBuildFile; fileRef = E5C279081557EC34000DFB84 /* Claims.xml */; };
 		E5FB18AD1557389900A30E07 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5FB18AC1557389900A30E07 /* MessageUI.framework */; };
 		E5FB18AE15573ABA00A30E07 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5FB18AC1557389900A30E07 /* MessageUI.framework */; };
 /* End PBXBuildFile section */
@@ -53,10 +55,7 @@
 		E50AB8DD154CB10300920B1D /* CAAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAAppDelegate.m; sourceTree = "<group>"; };
 		E50AB8E0154CB10300920B1D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		E50AB8E3154CB10300920B1D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		E50AB8E5154CB10300920B1D /* CAFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAFirstViewController.h; sourceTree = "<group>"; };
-		E50AB8E6154CB10300920B1D /* CAFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAFirstViewController.m; sourceTree = "<group>"; };
 		E50AB8E8154CB10300920B1D /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
-		E50AB8EA154CB10300920B1D /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
 		E50AB8EC154CB10300920B1D /* CASecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CASecondViewController.h; sourceTree = "<group>"; };
 		E50AB8ED154CB10300920B1D /* CASecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CASecondViewController.m; sourceTree = "<group>"; };
 		E50AB8EF154CB10300920B1D /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
@@ -66,7 +65,15 @@
 		E50AB903154CB10300920B1D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E50AB905154CB10300920B1D /* ClaimsAdjusterTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClaimsAdjusterTests.h; sourceTree = "<group>"; };
 		E50AB906154CB10300920B1D /* ClaimsAdjusterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClaimsAdjusterTests.m; sourceTree = "<group>"; };
-		E589C751154DBFA10043D9C4 /* Camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Camera.png; sourceTree = "<group>"; };
+		E5C278F215579085000DFB84 /* XMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLParser.h; sourceTree = "<group>"; };
+		E5C278F315579085000DFB84 /* XMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLParser.m; sourceTree = "<group>"; };
+		E5C278F615579398000DFB84 /* WIPList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WIPList.h; sourceTree = "<group>"; };
+		E5C278F715579398000DFB84 /* WIPList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WIPList.m; sourceTree = "<group>"; };
+		E5C278F915579BD2000DFB84 /* CATableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CATableViewController.h; sourceTree = "<group>"; };
+		E5C278FA15579BD2000DFB84 /* CATableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CATableViewController.m; sourceTree = "<group>"; };
+		E5C278FC15579DE7000DFB84 /* CADetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CADetailViewController.h; sourceTree = "<group>"; };
+		E5C278FD15579DE7000DFB84 /* CADetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CADetailViewController.m; sourceTree = "<group>"; };
+		E5C279081557EC34000DFB84 /* Claims.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Claims.xml; sourceTree = "<group>"; };
 		E5FB18AC1557389900A30E07 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -130,17 +137,21 @@
 		E50AB8D3154CB10300920B1D /* ClaimsAdjuster */ = {
 			isa = PBXGroup;
 			children = (
+				E5C279081557EC34000DFB84 /* Claims.xml */,
+				E5C278F215579085000DFB84 /* XMLParser.h */,
+				E5C278F315579085000DFB84 /* XMLParser.m */,
+				E5C278F615579398000DFB84 /* WIPList.h */,
+				E5C278F715579398000DFB84 /* WIPList.m */,
 				E50AB8DC154CB10300920B1D /* CAAppDelegate.h */,
 				E50AB8DD154CB10300920B1D /* CAAppDelegate.m */,
 				E50AB8DF154CB10300920B1D /* MainStoryboard_iPhone.storyboard */,
 				E50AB8E2154CB10300920B1D /* MainStoryboard_iPad.storyboard */,
-				E50AB8E5154CB10300920B1D /* CAFirstViewController.h */,
-				E50AB8E6154CB10300920B1D /* CAFirstViewController.m */,
-				E50AB8E8154CB10300920B1D /* first.png */,
-				E50AB8EA154CB10300920B1D /* first@2x.png */,
+				E5C278F915579BD2000DFB84 /* CATableViewController.h */,
+				E5C278FA15579BD2000DFB84 /* CATableViewController.m */,
+				E5C278FC15579DE7000DFB84 /* CADetailViewController.h */,
+				E5C278FD15579DE7000DFB84 /* CADetailViewController.m */,
 				E50AB8EC154CB10300920B1D /* CASecondViewController.h */,
 				E50AB8ED154CB10300920B1D /* CASecondViewController.m */,
-				E50AB8EF154CB10300920B1D /* second.png */,
 				E50AB8D4154CB10300920B1D /* Supporting Files */,
 			);
 			path = ClaimsAdjuster;
@@ -149,7 +160,8 @@
 		E50AB8D4154CB10300920B1D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				E589C751154DBFA10043D9C4 /* Camera.png */,
+				E50AB8EF154CB10300920B1D /* second.png */,
+				E50AB8E8154CB10300920B1D /* first.png */,
 				E50AB8D5154CB10300920B1D /* ClaimsAdjuster-Info.plist */,
 				E50AB8D6154CB10300920B1D /* InfoPlist.strings */,
 				E50AB8D9154CB10300920B1D /* main.m */,
@@ -252,9 +264,8 @@
 				E50AB8E1154CB10300920B1D /* MainStoryboard_iPhone.storyboard in Resources */,
 				E50AB8E4154CB10300920B1D /* MainStoryboard_iPad.storyboard in Resources */,
 				E50AB8E9154CB10300920B1D /* first.png in Resources */,
-				E50AB8EB154CB10300920B1D /* first@2x.png in Resources */,
 				E50AB8F0154CB10300920B1D /* second.png in Resources */,
-				E589C752154DBFA10043D9C4 /* Camera.png in Resources */,
+				E5C279091557EC34000DFB84 /* Claims.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,8 +302,11 @@
 			files = (
 				E50AB8DA154CB10300920B1D /* main.m in Sources */,
 				E50AB8DE154CB10300920B1D /* CAAppDelegate.m in Sources */,
-				E50AB8E7154CB10300920B1D /* CAFirstViewController.m in Sources */,
 				E50AB8EE154CB10300920B1D /* CASecondViewController.m in Sources */,
+				E5C278F415579085000DFB84 /* XMLParser.m in Sources */,
+				E5C278F815579399000DFB84 /* WIPList.m in Sources */,
+				E5C278FB15579BD2000DFB84 /* CATableViewController.m in Sources */,
+				E5C278FE15579DE8000DFB84 /* CADetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

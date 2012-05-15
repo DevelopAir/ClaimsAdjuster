@@ -1,3 +1,4 @@
+// ----------------------------------------------------------------------
 //
 //  CAAppDelegate.m
 //  ClaimsAdjuster
@@ -5,44 +6,80 @@
 //  Created by Paul Duncanson on 2/28/12.
 //  Copyright (c) 2012 __Invigorate_Software_for_TOPA_Insurance__. All rights reserved.
 //
+// Rev. History:
+//
+// ----------------------------------------------------------------------
 
 #import "CAAppDelegate.h"
+#import "XMLParser.h"
 
 @implementation CAAppDelegate
 
 @synthesize window = _window;
+@synthesize listArray;
+@synthesize navigationController = _navigationController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    // To access current WIP Claims from UI Test Portal uncomment following block and 
+    // comment out local access used during local development
+    
+    /*
+    //----Retrieve current WIP Claims from UI Test Portal-------
+    NSURL *url = [[NSURL alloc] initWithString:@"http://www.topa-portal.com/WIPClaims.xml"];
+    
+    NSData *data = [[NSData alloc] initWithContentsOfURL:url]; 
+    //----------------------------------------------------------
+    */
+    
+    //----Retrieve WIP Claims test data from local xml file-----
+    NSString *path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Claims.xml"];
+    
+    NSData *data = [[NSData alloc] initWithContentsOfFile:path];
+    //-----------------------------------------------------------
+    
+    NSXMLParser *nsxmlParser = [[NSXMLParser alloc] initWithData:data];
+    
+    XMLParser *theXMLParser = [[XMLParser alloc] initXMLParser];
+    
+    [nsxmlParser setDelegate:theXMLParser];
+    
+    // Verify that XML parsing worked.
+    BOOL parseOk = [nsxmlParser parse];
+    
+    if (parseOk) {
+        NSLog(@"WIP Count is %i", [listArray count]);
+    }
+    else {
+        NSLog(@"Error while parsing XML data from remote server.");
+    }
+
+    [data release];
+    [nsxmlParser release];
+    [theXMLParser release]; 
+    
     return YES;
 }
-							
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+
 }
 
 @end

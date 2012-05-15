@@ -1,3 +1,4 @@
+// ----------------------------------------------------------------------
 //
 //  CASecondViewController.m
 //  ClaimsAdjuster
@@ -5,25 +6,39 @@
 //  Created by Paul Duncanson on 2/28/12.
 //  Copyright (c) 2012 __Invigorate_Software_for_TOPA_Insurance__. All rights reserved.
 //
+// Rev. History:
+//
+// ----------------------------------------------------------------------
 
 #import "CASecondViewController.h"
 
 @implementation CASecondViewController
 
+- (void)dealloc 
+{
+    [Email release];
+    [imagePicker release];
+    [super dealloc];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    NSLog(@"Received memory use warning in CASecondViewController");
+    [super didReceiveMemoryWarning];
+}
+
+- (id) init 
+{         
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    if ([MFMailComposeViewController canSendMail]) {
-        ActivateCamera.enabled = YES;
-    } else {
-        ActivateCamera.enabled = NO;
-    }
 }
 
 - (void)viewDidUnload
 {
-    ActivateCamera = nil;
     [super viewDidUnload];
 }
 
@@ -36,7 +51,7 @@
     }
 }
 
-#pragma mark EMailOutputRoutinesToTestInterfaceBeforeConvertingToWS
+#pragma mark EMailOutputRoutines
 
 - (void)emailImage:(UIImage *)image
 {
@@ -45,11 +60,11 @@
     Email.mailComposeDelegate = self;
     
     // Set address, subject and body of email
-    [Email setSubject:@"XML and photo sent from ClaimsAssessor IPad App"];
+    [Email setSubject:@"XML and photo sent from ClaimsAssessor IPhone App"];
 
     [Email setToRecipients:[NSArray arrayWithObjects:@"pbduncanson@gmail.com", nil]];
 
-    NSString *emailBody = @"Interface refinement app prior to WS conversion.";
+    NSString *emailBody = @"ClaimsAssessor prior to conversion to Web Service .";
 
     [Email setMessageBody:emailBody isHTML:NO];
 
@@ -61,22 +76,24 @@
 
     // Show email and allow user to send or cancel.
     [self presentModalViewController:Email animated:YES];
-
 }
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error 
 {	
+    [self becomeFirstResponder];
 	[self dismissModalViewControllerAnimated:YES];
 }
 
-- (void)buttonPressed:(UIButton *)ActivateCamera
+-(IBAction)btnActivateCameraClicked:(id) sender
 {
+    NSLog(@"Got to the buttonPressed routine.");
+    
 	// Create image picker controller
     imagePicker = [[UIImagePickerController alloc] init];
     
 	imagePicker.sourceType =  UIImagePickerControllerSourceTypeCamera;
     
-	// imagePicker.delegate = self;
+	imagePicker.delegate = self;
         
     // Show image picker
 	[self presentModalViewController:imagePicker animated:YES];	
@@ -92,19 +109,8 @@
 	// Close the camera
 	[self dismissModalViewControllerAnimated:YES];
     
-	// Pass image to method that will email it
-    // A delay is needed so camera view can be dismissed.  !!!!! Spawn a thread to handle this 
-                                                              // to improve interactivity when 
-                                                              // there's time.
-    
+	// Pass image to method that will email it if user agrees.
     [self performSelector:@selector(emailImage:) withObject:image afterDelay:1.0];
-}
-
-- (void)dealloc 
-{
-    [Email release];
-    [imagePicker release];
-    [super dealloc];
 }
 
 @end
