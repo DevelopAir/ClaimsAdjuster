@@ -28,6 +28,8 @@
 		E5C278FB15579BD2000DFB84 /* CATableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C278FA15579BD2000DFB84 /* CATableViewController.m */; };
 		E5C278FE15579DE8000DFB84 /* CADetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C278FD15579DE7000DFB84 /* CADetailViewController.m */; };
 		E5C279091557EC34000DFB84 /* Claims.xml in Resources */ = {isa = PBXBuildFile; fileRef = E5C279081557EC34000DFB84 /* Claims.xml */; };
+		E5F798FE15622AE90050B9F5 /* CANotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F798FD15622AE90050B9F5 /* CANotesViewController.m */; };
+		E5F7990115623B480050B9F5 /* CASendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F7990015623B470050B9F5 /* CASendViewController.m */; };
 		E5FB18AD1557389900A30E07 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5FB18AC1557389900A30E07 /* MessageUI.framework */; };
 		E5FB18AE15573ABA00A30E07 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5FB18AC1557389900A30E07 /* MessageUI.framework */; };
 /* End PBXBuildFile section */
@@ -74,6 +76,10 @@
 		E5C278FC15579DE7000DFB84 /* CADetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CADetailViewController.h; sourceTree = "<group>"; };
 		E5C278FD15579DE7000DFB84 /* CADetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CADetailViewController.m; sourceTree = "<group>"; };
 		E5C279081557EC34000DFB84 /* Claims.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Claims.xml; sourceTree = "<group>"; };
+		E5F798FC15622AE90050B9F5 /* CANotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CANotesViewController.h; sourceTree = "<group>"; };
+		E5F798FD15622AE90050B9F5 /* CANotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CANotesViewController.m; sourceTree = "<group>"; };
+		E5F798FF15623B470050B9F5 /* CASendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CASendViewController.h; sourceTree = "<group>"; };
+		E5F7990015623B470050B9F5 /* CASendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CASendViewController.m; sourceTree = "<group>"; };
 		E5FB18AC1557389900A30E07 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -152,6 +158,10 @@
 				E5C278FD15579DE7000DFB84 /* CADetailViewController.m */,
 				E50AB8EC154CB10300920B1D /* CASecondViewController.h */,
 				E50AB8ED154CB10300920B1D /* CASecondViewController.m */,
+				E5F798FC15622AE90050B9F5 /* CANotesViewController.h */,
+				E5F798FD15622AE90050B9F5 /* CANotesViewController.m */,
+				E5F798FF15623B470050B9F5 /* CASendViewController.h */,
+				E5F7990015623B470050B9F5 /* CASendViewController.m */,
 				E50AB8D4154CB10300920B1D /* Supporting Files */,
 			);
 			path = ClaimsAdjuster;
@@ -307,6 +317,8 @@
 				E5C278F815579399000DFB84 /* WIPList.m in Sources */,
 				E5C278FB15579BD2000DFB84 /* CATableViewController.m in Sources */,
 				E5C278FE15579DE8000DFB84 /* CADetailViewController.m in Sources */,
+				E5F798FE15622AE90050B9F5 /* CANotesViewController.m in Sources */,
+				E5F7990115623B480050B9F5 /* CASendViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

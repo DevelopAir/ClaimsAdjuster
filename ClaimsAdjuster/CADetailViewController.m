@@ -4,7 +4,7 @@
 //  ClaimsAdjuster
 //
 //  Created by Paul Duncanson on 5/6/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012__Invigorate_Software_For_Topa_Insurance__. All rights reserved.
 //
 // Rev. History:
 //
@@ -15,30 +15,11 @@
 
 @implementation CADetailViewController
 
-@synthesize nameField = _nameField;
-@synthesize causeField = _causeField;
-@synthesize policyField = _policyField;
 @synthesize listItem = _listItem;
 @synthesize dolLabel = _dolLabel;
-@synthesize dolField = _dolField;
 @synthesize dolDate = _dolDate;
+  
 @synthesize theList;
-
-- (void)didReceiveMemoryWarning
-{
-    NSLog(@"Received memory use warning in CADetailViewController");
-    
-    [super didReceiveMemoryWarning];
-}
-
-- (void) dealloc
-{
-    [_dolDate release];
-    [_dolField release];
-    [_dolLabel release];    
-
-    [super dealloc];
-}
 
 CAAppDelegate *app;
 
@@ -48,49 +29,71 @@ CAAppDelegate *app;
 
     self.title = theList.name;
     
-    self.nameField.text = self.listItem.name;
-    self.causeField.text = self.listItem.cause;
-    self.policyField.text = self.listItem.policy;
-    self.dolField.text = self.listItem.dol;
-    
     app = [[UIApplication sharedApplication] delegate]; 
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)theTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CellIdentifier = @"DetailCell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
-	
-	switch(indexPath.section)
-	{
-		case 0:
-			cell.textLabel.text = theList.name;
-			break;
-		case 1:
-			cell.textLabel.text = theList.cause;
-			break;
-		case 2:
-			cell.textLabel.text = theList.dol;
-			break;
-        case 3:
-			cell.textLabel.text = theList.policy;
-			break;
-	}
-	
-	return cell;
 }
+
+// Customize the appearance of table view cells.
+- (UITableViewCell *)tableView:(UITableView *)tableView_ 
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath 
+{  
+    NSString *strCellIdentifier = [NSString stringWithFormat: @"Cell_%i", indexPath.section];
+       
+    UITableViewCell *cell = [tableView_ dequeueReusableCellWithIdentifier:strCellIdentifier];
+    
+    if (cell == nil) 
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:strCellIdentifier];
+		UITextField *textField = [[UITextField alloc]initWithFrame:CGRectMake(10, 0, 300, 30)];
+        textField.borderStyle = UITextBorderStyleNone;
+		cell.textLabel.backgroundColor = [UIColor blackColor];
+        
+        // Retrieve the cross reference table index in the textField
+        textField.tag = indexPath.section;
+        
+        // Initialize values from the mutable array
+        switch ( indexPath.section ) {
+            case 0:
+                textField.text = theList.name;
+                break;
+                
+            case 1:
+                textField.text = theList.cause;
+                break;
+                
+            case 2:            
+                textField.text = theList.dol;
+                break;
+                
+            case 3:     
+                textField.text = theList.policy;
+                break;
+        }
+           
+		[textField setDelegate:self];
+		
+		[textField addTarget:self 					 
+                      action:@selector(textFieldDone:) 
+			forControlEvents:UIControlEventEditingDidEndOnExit];
+        
+		[cell.contentView addSubview:textField];
+		[textField release];
+    }
+    
+    return cell;
+}
+
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	
@@ -102,10 +105,10 @@ CAAppDelegate *app;
 			sectionName = [NSString stringWithString:@"Name"];
 			break;
 		case 1:
-			sectionName = [NSString stringWithString:@"Cause"];
+			sectionName = [NSString stringWithString:@"Cause of Loss"];
 			break;
 		case 2:
-			sectionName = [NSString stringWithString:@"dol"];
+			sectionName = [NSString stringWithString:@"Date of Loss"];
 			break;
         case 3:
 			sectionName = [NSString stringWithString:@"Policy"];
@@ -113,15 +116,9 @@ CAAppDelegate *app;
 	}
 	
 	return sectionName;
-}		
+}		    
 
 #pragma mark - IBActions
-
-- (void)taskDataChaged:(id)sender {
-    self.listItem.name = self.nameField.text;
-    self.listItem.cause = self.causeField.text;
-    self.listItem.policy = self.policyField.text;
-}
 
 -(void)setDol {
     dateSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:nil cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
@@ -148,7 +145,7 @@ CAAppDelegate *app;
     
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelDateSet)];
     
-    [controlToolBar setItem:[NSArray arrayWithObjects:spacer, cancelButton, setButton, nil] animated:NO];
+    [controlToolBar setItems:[NSArray arrayWithObjects:spacer, cancelButton, setButton, nil] animated:NO];
     
     [spacer release];
     [setButton release];
@@ -165,7 +162,6 @@ CAAppDelegate *app;
 -(void) cancelDateSet {
     [dateSheet dismissWithClickedButtonIndex:0 animated:YES];
     [dateSheet release];
-    
 }
 
 -(void) dismissDateSet {
@@ -181,7 +177,7 @@ CAAppDelegate *app;
     
     [dateFormatter setDateFormat:@"MM/dd/yyyy"];
     
-    [_dolField setText:[dateFormatter stringFromDate:self.dolDate]];
+//    [_dolField setText:[dateFormatter stringFromDate:self.dolDate]];
     
     [dateFormatter release];
     
@@ -210,9 +206,53 @@ CAAppDelegate *app;
     [dateSheet release];
 }
 
--(BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    [self setDol];
-    return NO;
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    
+    switch (textField.tag) {
+        case 0:
+            self.theList.name = textField.text;
+            break;
+            
+        case 1:
+            self.theList.cause = textField.text;
+            break;
+            
+        case 2:
+            self.theList.dol = textField.text;
+            break;
+            
+        case 3:
+            self.theList.policy = textField.text;
+            break;
+            
+        default:
+            NSLog(@"Error in CADetailViewController:textFieldDidEndEditing; received a selected table index value beyond table limit.");
+            break;
+    }
+}
+
+-(IBAction)textFieldDone:(id)sender{	
+}
+
+#pragma mark Memory Management
+
+- (void)didReceiveMemoryWarning
+{
+    NSLog(@"Received memory use warning in CADetailViewController");
+    
+    [super didReceiveMemoryWarning];
+}
+
+- (void) dealloc
+{
+    [_dolDate release];
+    //  [_dolField release];
+    [_dolLabel release];    
+    
+    [super dealloc];
 }
 
 @end

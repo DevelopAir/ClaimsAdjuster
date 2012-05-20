@@ -19,6 +19,7 @@
 @property (nonatomic, retain) NSString *dol;
 @property (nonatomic, retain) NSString *policy;
 @property (nonatomic, retain) NSString *premCodes;
+
 @property (nonatomic, readwrite) NSInteger listID;
 
 @end

@@ -12,7 +12,8 @@
 
 #import <UIKit/UIKit.h>
 #import "WIPList.h"
-@interface CADetailViewController : UITableViewController {
+
+@interface CADetailViewController : UITableViewController <UITextFieldDelegate> {
     
     IBOutlet UITableView *tableView;
     
@@ -20,29 +21,33 @@
     UIActionSheet *dateSheet;
     UILabel *dolLabel;
     
-    UITextField *nameField;
-    UITextField *causeField;
-    UITextField *policyField;
-    UITextField *dolField;
-    
+    NSString *strNameField;
+    NSString *strCauseField;
+    NSString *strPolicyField;
+    NSString *strDOLField;
 }    
-- (void)didReceiveMemoryWarning;
-
-@property (nonatomic, strong) IBOutlet UITextField *nameField;
-@property (nonatomic, strong) IBOutlet UITextField *causeField;
-@property (retain, nonatomic) IBOutlet UITextField *dolField;
-@property (nonatomic, strong) IBOutlet UITextField *policyField;
 
 @property (nonatomic, retain) NSDate *dolDate;
 @property (nonatomic, strong) WIPList *listItem;
 @property (retain, nonatomic) IBOutlet UILabel *dolLabel;
+@property (nonatomic, retain) WIPList *theList;
 
-- (IBAction)taskDataChaged:(id)sender;
+- (void)viewDidLoad;
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 
-- (void) setDol;
+- (UITableViewCell *)tableView:(UITableView *)tableView 
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section;
+
+- (void)setDol;
 - (void) dismissDateSet;
 - (void) cancelDateSet;
+- (void)textFieldDidBeginEditing:(UITextField *)textField;
+- (void)textFieldDidEndEditing:(UITextField *)textField;
 
-@property (nonatomic, retain) WIPList *theList;
+- (void)didReceiveMemoryWarning;
+- (void) dealloc;
 
 @end

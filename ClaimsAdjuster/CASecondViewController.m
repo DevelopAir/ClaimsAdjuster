@@ -14,19 +14,6 @@
 
 @implementation CASecondViewController
 
-- (void)dealloc 
-{
-    [Email release];
-    [imagePicker release];
-    [super dealloc];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    NSLog(@"Received memory use warning in CASecondViewController");
-    [super didReceiveMemoryWarning];
-}
-
 - (id) init 
 {         
     return self;
@@ -40,6 +27,11 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    
+    //UIAlertView *alert [[UIAlertView alloc] initWithTitle:@"This is my title" message:@"This is my message" delegate:self cancelButtonTitle:nil otherButtonTitles:@"Okay", nil];
+    
+    //[alert show];
+    //[alert release];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -51,38 +43,7 @@
     }
 }
 
-#pragma mark EMailOutputRoutines
-
-- (void)emailImage:(UIImage *)image
-{
-    Email = [[MFMailComposeViewController alloc] init];
-    
-    Email.mailComposeDelegate = self;
-    
-    // Set address, subject and body of email
-    [Email setSubject:@"XML and photo sent from ClaimsAssessor IPhone App"];
-
-    [Email setToRecipients:[NSArray arrayWithObjects:@"pbduncanson@gmail.com", nil]];
-
-    NSString *emailBody = @"ClaimsAssessor prior to conversion to Web Service .";
-
-    [Email setMessageBody:emailBody isHTML:NO];
-
-    // Create NSData object that will hold PNG image of photo taken
-    NSData *data = UIImagePNGRepresentation(image);
-
-    // Attach image to email
-    [Email addAttachmentData:data mimeType:@"image/png" fileName:@"CameraImage"];
-
-    // Show email and allow user to send or cancel.
-    [self presentModalViewController:Email animated:YES];
-}
-
-- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error 
-{	
-    [self becomeFirstResponder];
-	[self dismissModalViewControllerAnimated:YES];
-}
+#pragma mark ImagePickerRoutines
 
 -(IBAction)btnActivateCameraClicked:(id) sender
 {
@@ -97,6 +58,22 @@
 	[self presentModalViewController:imagePicker animated:YES];	
 }
 
+-(void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
+{
+    if (error == NULL) 
+    {
+        UIAlertView *error = [[UIAlertView alloc] initWithTitle:@"Success" message:@"Image successfully saved." delegate:self cancelButtonTitle:@"Close" otherButtonTitles:nil];
+        [error show];
+        [error release];
+    }
+    else {
+        UIAlertView *error = [[UIAlertView alloc] initWithTitle:@"ERROR" message:@"Image was not saved." delegate:self cancelButtonTitle:@"Close" otherButtonTitles:nil];
+        [error show];
+        [error release];
+
+    }
+}
+
 - (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
 	// Access image from dictionary
@@ -107,8 +84,25 @@
 	// Close the camera
 	[self dismissModalViewControllerAnimated:YES];
     
+    UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), self);
+    
+    
 	// Pass image to method that will email it if user agrees.
-    [self performSelector:@selector(emailImage:) withObject:image afterDelay:1.0];
+    //[self performSelector:@selector(emailImage:) withObject:image afterDelay:1.0];
+}
+
+#pragma mark Memory Management
+
+- (void)dealloc 
+{
+    [imagePicker release];
+    [super dealloc];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    NSLog(@"Received memory use warning in CASecondViewController");
+    [super didReceiveMemoryWarning];
 }
 
 @end

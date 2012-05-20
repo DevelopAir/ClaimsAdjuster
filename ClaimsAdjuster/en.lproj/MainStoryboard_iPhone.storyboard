@@ -10,7 +10,7 @@
         <scene sceneID="waq-cc-0Pb">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r3z-1W-abO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="J7l-di-jQX" customClass="CATableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="CATableViewController" title="Claims To Do" id="J7l-di-jQX" customClass="CATableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" sectionIndexMinimumDisplayRowCount="9" rowHeight="45" sectionHeaderHeight="22" sectionFooterHeight="22" id="rcw-k2-fo3">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -56,7 +56,8 @@
         <scene sceneID="hRN-2A-uQD">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fOt-p1-dgv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController storyboardIdentifier="CADetailViewController" id="BkH-Rz-VKw" customClass="CADetailViewController" sceneMemberID="viewController">
+                <swipeGestureRecognizer direction="left" id="zKm-iF-LPz"/>
+                <tableViewController storyboardIdentifier="CADetailViewController" title="Edit" id="BkH-Rz-VKw" customClass="CADetailViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="XAY-fS-SBd">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -77,17 +78,6 @@
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="29"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" id="Ebm-Fu-eCj">
-                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="37"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                    <connections>
-                                                        <action selector="taskDataChaged:" destination="BkH-Rz-VKw" eventType="editingChanged" id="2H5-Me-0Iz"/>
-                                                    </connections>
-                                                </textField>
-                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </tableViewCell>
@@ -101,17 +91,6 @@
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="29"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" id="qzs-XF-MAL">
-                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="37"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                    <connections>
-                                                        <action selector="taskDataChaged:" destination="BkH-Rz-VKw" eventType="editingChanged" id="VKN-C6-yNa"/>
-                                                    </connections>
-                                                </textField>
-                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </tableViewCell>
@@ -125,17 +104,6 @@
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="29"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" id="i08-cU-SiI">
-                                                    <rect key="frame" x="-7" y="0.0" width="300" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                    <connections>
-                                                        <action selector="taskDataChaged:" destination="BkH-Rz-VKw" eventType="editingChanged" id="mqj-cq-iUt"/>
-                                                    </connections>
-                                                </textField>
-                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </tableViewCell>
@@ -149,17 +117,6 @@
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="31"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" id="leq-My-WHp">
-                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                    <connections>
-                                                        <action selector="taskDataChaged:" destination="BkH-Rz-VKw" eventType="editingChanged" id="dmc-ER-vqv"/>
-                                                    </connections>
-                                                </textField>
-                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </tableViewCell>
@@ -173,11 +130,8 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Edit" id="0sn-y5-tHS"/>
                     <connections>
-                        <outlet property="causeField" destination="qzs-XF-MAL" id="HWk-uA-DgC"/>
-                        <outlet property="dolField" destination="i08-cU-SiI" id="ke6-Xr-Nht"/>
                         <outlet property="dolLabel" destination="WQb-F3-pSw" id="J2J-Vf-tot"/>
-                        <outlet property="nameField" destination="Ebm-Fu-eCj" id="gV3-8X-2j4"/>
-                        <outlet property="policyField" destination="leq-My-WHp" id="G7O-Xp-kF2"/>
+                        <outlet property="tableView" destination="XAY-fS-SBd" id="SPP-nT-yoJ"/>
                     </connections>
                 </tableViewController>
             </objects>
@@ -189,7 +143,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="12" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="CASecondViewController" title="Second" id="3" customClass="CASecondViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="17">
-                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="or8-M0-xcG">
@@ -210,13 +164,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="wSB-Be-abj" appends="YES" id="Nkw-dk-ULM"/>
-                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Photo" id="6"/>
                 </viewController>
-                <swipeGestureRecognizer direction="left" id="wSB-Be-abj"/>
+                <swipeGestureRecognizer direction="left" id="8eQ-Yw-8Ts"/>
+                <swipeGestureRecognizer direction="right" id="GX0-S9-8eK">
+                    <connections>
+                        <segue destination="M9K-lm-Pq4" kind="modal" id="oe2-8f-E50"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1025" y="-322"/>
         </scene>
@@ -224,9 +180,9 @@
         <scene sceneID="A7r-tO-1Vf">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8z3-fc-Iwd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="dSq-mL-7go" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CASendViewController" title="Send" id="dSq-mL-7go" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gpX-Dq-r7w">
-                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -236,7 +192,12 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Send" id="AHx-Ys-zzk"/>
                 </viewController>
-                <swipeGestureRecognizer direction="right" id="D70-uD-I2r">
+                <swipeGestureRecognizer direction="right" id="HlG-kQ-tbz">
+                    <connections>
+                        <segue destination="wPz-w5-Nq0" kind="modal" id="HCg-7e-HDB"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="D70-uD-I2r">
                     <connections>
                         <segue destination="M9K-lm-Pq4" kind="modal" id="561-QI-6oL"/>
                     </connections>
@@ -244,13 +205,13 @@
             </objects>
             <point key="canvasLocation" x="-253" y="-99"/>
         </scene>
-        <!--View Controller - Notes-->
+        <!--Notes View Controller - Notes-->
         <scene sceneID="H36-6t-cFm">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2C4-V8-9rJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController title="Notes" id="M9K-lm-Pq4" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CANotesViewController" title="Notes" id="M9K-lm-Pq4" customClass="CANotesViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4tJ-wC-uay">
-                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Claim Notes" id="uhd-Zb-pja">
@@ -268,14 +229,22 @@
                         </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Notes" id="v2f-9b-gWS"/>
+                    <connections>
+                        <outlet property="ClaimNote" destination="uhd-Zb-pja" id="F4r-N2-8ei"/>
+                    </connections>
                 </viewController>
                 <swipeGestureRecognizer direction="left" id="NlN-zT-Pi7">
                     <connections>
                         <segue destination="3" kind="modal" id="JSW-gE-D9p"/>
                     </connections>
                 </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="G6q-Cu-B6J">
+                    <connections>
+                        <segue destination="dSq-mL-7go" kind="modal" id="Rcz-HB-H8c"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="483" y="-99"/>
+            <point key="canvasLocation" x="272" y="-114"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="15">
@@ -298,11 +267,11 @@
             </objects>
             <point key="canvasLocation" x="-638" y="-654"/>
         </scene>
-        <!--Navigation Controller - Claims-->
+        <!--Navigation Controller - Claims To Do-->
         <scene sceneID="QW8-x9-ZeD">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q1t-hw-eLf" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController id="wPz-w5-Nq0" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="CANavController" title="Claims To Do" id="wPz-w5-Nq0" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Claims" id="Ieo-Ut-A5f"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="vZV-dz-mGx">
@@ -318,13 +287,36 @@
             <point key="canvasLocation" x="211" y="-891"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="CADetailViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CADetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dolLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="CANotesViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CANotesViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="ClaimNote" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="CASecondViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CASecondViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="btnActivateCameraClicked:"/>
+            </relationships>
+        </class>
+        <class className="CATableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CATableViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="o35-nw-PUh"/>
-        <segue reference="27"/>
+        <segue reference="BWt-uI-3dT"/>
     </inferredMetricsTieBreakers>
 </document>

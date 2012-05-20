@@ -20,20 +20,6 @@
 @synthesize detailViewController = _detailViewController;
 @synthesize theList;
 
-- (void)didReceiveMemoryWarning
-{
-    NSLog(@"Received memory use warning in CATableViewController");
-    [super didReceiveMemoryWarning];
-}
-
-- (void) dealloc
-{
-    [app release];
-    [theList release];
-    
-    [super dealloc];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -109,26 +95,33 @@
     
     detailViewController.theList = [app.listArray objectAtIndex:indexPath.row];
 
-    NSLog(@"theList.Name  is %@", (char *)[detailViewController.theList name]); 
-    NSLog(@"theList.Cause is %@", (char *)[detailViewController.theList cause]); 
+    //NSLog(@"theList.Name   is %@", [detailViewController.theList name]); 
+    //NSLog(@"theList.Cause  is %@", [detailViewController.theList cause]); 
+    //NSLog(@"theList.Dol    is %@", [detailViewController.theList dol]);
+    //NSLog(@"theList.Policy is %@", [detailViewController.theList policy]);
     
     [self.navigationController pushViewController:detailViewController animated:YES]; 
-    
-    NSLog(@"End of didSelectRowAtIndexPath in CATableViewController");
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender 
 {
-    NSLog(@"Beginning of prepareForSegue in CATableViewController");
-    //if ([[segue identifier] isEqualTostring:@"EditClaimDetails"])
-    //{
-    //    CADetailViewController *detailViewController = [segue destVC];
-        
-       // detailViewController.sighting = [self.tabBarController objectInListAtIndex:[self.tableView indexPathForSelectedRow].r// //;
-        
-        
-    //}
       
+}
+
+#pragma mark Memory Management
+
+- (void)didReceiveMemoryWarning
+{
+    NSLog(@"Received memory use warning in CATableViewController");
+    [super didReceiveMemoryWarning];
+}
+
+- (void) dealloc
+{
+    //[app release];
+    //[theList release];
+    
+    [super dealloc];
 }
 
 @end

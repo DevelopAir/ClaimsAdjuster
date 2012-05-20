@@ -14,10 +14,10 @@
 
 @implementation WIPList
 
-@synthesize cause, dol, policy, name, listID, premCodes;
+@synthesize name, cause, dol, policy, listID, premCodes;
 
--(id) :
-        (NSString *) edtName : 
+-(id) :(NSString *)
+        edtName : 
         edtCause : (NSString *) 
         edtDol : (NSString *)
         edtPolicy : (NSString *) 
