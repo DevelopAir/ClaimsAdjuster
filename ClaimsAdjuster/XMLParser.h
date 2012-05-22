@@ -16,10 +16,10 @@
 
 @interface XMLParser : NSObject <NSXMLParserDelegate> {
     
+@private
     CAAppDelegate *app;
     WIPList *theList;
     NSMutableString *currentElementValue;
-    
 }
 
 -(id)initXMLParser;

@@ -13,6 +13,8 @@
 #import "CASendViewController.h"
 
 @implementation CASendViewController
+{
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,27 +46,27 @@
 
 - (void)emailImage:(UIImage *)image
 {
-    Email = [[MFMailComposeViewController alloc] init];
+    email = [[MFMailComposeViewController alloc] init];
     
-    Email.mailComposeDelegate = self;
+    email.mailComposeDelegate = self;
     
     // Set address, subject and body of email
-    [Email setSubject:@"XML and photo sent from ClaimsAssessor IPhone App"];
+    [email setSubject:@"XML and photo sent from ClaimsAssessor IPhone App"];
     
-    [Email setToRecipients:[NSArray arrayWithObjects:@"pbduncanson@gmail.com", nil]];
+    [email setToRecipients:[NSArray arrayWithObjects:@"pbduncanson@gmail.com", nil]];
     
     NSString *emailBody = @"ClaimsAssessor prior to conversion to Web Service .";
     
-    [Email setMessageBody:emailBody isHTML:NO];
+    [email setMessageBody:emailBody isHTML:NO];
     
     // Create NSData object that will hold PNG image of photo taken
     NSData *data = UIImagePNGRepresentation(image);
     
     // Attach image to email
-    [Email addAttachmentData:data mimeType:@"image/png" fileName:@"CameraImage"];
+    [email addAttachmentData:data mimeType:@"image/png" fileName:@"CameraImage"];
     
     // Show email and allow user to send or cancel.
-    [self presentModalViewController:Email animated:YES];
+    [self presentModalViewController:email animated:YES];
 }
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error 

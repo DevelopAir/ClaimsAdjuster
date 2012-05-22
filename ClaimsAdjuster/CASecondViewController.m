@@ -13,6 +13,10 @@
 #import "CASecondViewController.h"
 
 @implementation CASecondViewController
+@synthesize goToSendFromPhotoButton;
+
+@synthesize selectedClaim;
+@synthesize theList;
 
 - (id) init 
 {         
@@ -21,17 +25,17 @@
 
 - (void)viewDidLoad
 {
+    //self.selectedClaim.text = theList.name;
     [super viewDidLoad];
 }
 
 - (void)viewDidUnload
 {
+    [imagePicker release];
+    [selectedClaim release];
+    [theList release];
+    [self setGoToSendFromPhotoButton:nil];
     [super viewDidUnload];
-    
-    //UIAlertView *alert [[UIAlertView alloc] initWithTitle:@"This is my title" message:@"This is my message" delegate:self cancelButtonTitle:nil otherButtonTitles:@"Okay", nil];
-    
-    //[alert show];
-    //[alert release];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -96,6 +100,9 @@
 - (void)dealloc 
 {
     [imagePicker release];
+    [selectedClaim release];
+    [theList release];
+    [goToSendFromPhotoButton release];
     [super dealloc];
 }
 

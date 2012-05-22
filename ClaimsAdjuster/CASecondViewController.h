@@ -11,6 +11,7 @@
 // ----------------------------------------------------------------------
 
 #import <UIKit/UIKit.h>
+#import "WIPList.h"
 
 @interface CASecondViewController : UIViewController
 <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
@@ -18,11 +19,16 @@
     UIImagePickerController *imagePicker;
 }
 
--(IBAction)btnActivateCameraClicked:(id) sender;
+@property (retain, nonatomic) IBOutlet UIBarButtonItem *goToSendFromPhotoButton;
 
-- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo;
+-(IBAction) btnActivateCameraClicked:(id) sender;
+
+@property (retain) IBOutlet UILabel *selectedClaim;
+@property (nonatomic, retain) WIPList *theList;
+
+- (void) image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo;
 - (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info;
 
-- (void)dealloc;
-- (void)didReceiveMemoryWarning;
+- (void) dealloc;
+- (void) didReceiveMemoryWarning;
 @end   

@@ -12,7 +12,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CAAppDelegate : UIResponder <UIApplicationDelegate>
+@interface CAAppDelegate : UIResponder <UIApplicationDelegate> {
+    NSInteger currentIdx;
+}
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) NSMutableArray *listArray;

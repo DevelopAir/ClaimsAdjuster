@@ -15,33 +15,31 @@
 
 @implementation CADetailViewController
 
-@synthesize listItem = _listItem;
 @synthesize dolLabel = _dolLabel;
+@synthesize goToNotesFromEditButton;
 @synthesize dolDate = _dolDate;
   
 @synthesize theList;
 
-CAAppDelegate *app;
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
     self.title = theList.name;
-    
-    app = [[UIApplication sharedApplication] delegate]; 
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 4;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView 
+ numberOfRowsInSection:(NSInteger)section 
+{
     return 1;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+- (void)      tableView:(UITableView *)tableView 
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
+{
 }
 
 // Customize the appearance of table view cells.
@@ -89,13 +87,15 @@ CAAppDelegate *app;
         
 		[cell.contentView addSubview:textField];
 		[textField release];
+        //[cell release];
     }
-    
     return cell;
 }
 
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+- (NSString *)tableView:(UITableView *)tableView 
+titleForHeaderInSection:(NSInteger)section 
+{
 	
 	NSString *sectionName = nil;
 	
@@ -120,7 +120,8 @@ CAAppDelegate *app;
 
 #pragma mark - IBActions
 
--(void)setDol {
+-(void)setDol 
+{
     dateSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:nil cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
     
     [dateSheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
@@ -206,11 +207,12 @@ CAAppDelegate *app;
     [dateSheet release];
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
+- (void)textFieldDidBeginEditing:(UITextField *)textField 
+{
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-    
+- (void)textFieldDidEndEditing:(UITextField *)textField 
+{
     switch (textField.tag) {
         case 0:
             self.theList.name = textField.text;
@@ -246,14 +248,47 @@ CAAppDelegate *app;
     [super didReceiveMemoryWarning];
 }
 
-- (void) dealloc
-{
+- (void)viewDidUnload {
     [_dolDate release];
     //  [_dolField release];
     [_dolLabel release];    
+    [dateSheet release];
+    [_dolDate release]; 
+    [theList release];
+    [tableView release];
     
+    [self setGoToNotesFromEditButton:nil];
+    [super viewDidUnload];
+}
+
+- (void) dealloc
+{
+    [_dolDate release];
+    _dolDate = nil;
+    
+    [_dolLabel release];
+    _dolLabel = nil;
+    
+    [dateSheet release];
+    dateSheet = nil;
+    
+    [_dolDate release];
+    _dolDate = nil;
+    
+    //  [_dolField release];
+    [_dolLabel release];
+    _dolLabel = nil;
+    
+    [theList release];
+    theList = nil;
+    
+    [tableView release];
+    tableView = nil;
+    
+    [goToNotesFromEditButton release];
     [super dealloc];
 }
+
 
 @end
 

@@ -28,11 +28,6 @@
     [self.tableView reloadData];
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -83,6 +78,8 @@
     
     theList = [app.listArray objectAtIndex:indexPath.row];
     
+    //app.currentIdx = [[NSInteger.alloc]init ][indexPath.row integer_t];
+    
     cell.textLabel.text = theList.name;    
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
@@ -94,18 +91,11 @@
     CADetailViewController *detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"CADetailViewController"];
     
     detailViewController.theList = [app.listArray objectAtIndex:indexPath.row];
-
-    //NSLog(@"theList.Name   is %@", [detailViewController.theList name]); 
-    //NSLog(@"theList.Cause  is %@", [detailViewController.theList cause]); 
-    //NSLog(@"theList.Dol    is %@", [detailViewController.theList dol]);
-    //NSLog(@"theList.Policy is %@", [detailViewController.theList policy]);
-    
     [self.navigationController pushViewController:detailViewController animated:YES]; 
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender 
 {
-      
 }
 
 #pragma mark Memory Management
@@ -116,10 +106,24 @@
     [super didReceiveMemoryWarning];
 }
 
+- (void)viewDidUnload
+{
+    //[app release];
+    [theList release];
+    [_detailViewController release];
+    [super viewDidUnload];
+}
+
 - (void) dealloc
 {
     //[app release];
-    //[theList release];
+    //app = nil;
+    
+    [theList release];
+    theList = nil;
+    
+    [_detailViewController release];
+    _detailViewController = nil;
     
     [super dealloc];
 }

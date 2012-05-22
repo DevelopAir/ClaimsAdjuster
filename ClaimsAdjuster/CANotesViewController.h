@@ -16,4 +16,6 @@
 
 @property (retain, nonatomic) IBOutlet UITextView *ClaimNote;
 
+@property (retain, nonatomic) IBOutlet UIBarButtonItem *goToPhotoFromNotesButton;
+
 @end

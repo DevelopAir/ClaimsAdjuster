@@ -14,9 +14,8 @@
 #import "WIPList.h"
 
 @interface CADetailViewController : UITableViewController <UITextFieldDelegate> {
-    
     IBOutlet UITableView *tableView;
-    
+
     NSDate *dolDate;
     UIActionSheet *dateSheet;
     UILabel *dolLabel;
@@ -27,8 +26,8 @@
     NSString *strDOLField;
 }    
 
+@property (retain, nonatomic) IBOutlet UIBarButtonItem *goToNotesFromEditButton;
 @property (nonatomic, retain) NSDate *dolDate;
-@property (nonatomic, strong) WIPList *listItem;
 @property (retain, nonatomic) IBOutlet UILabel *dolLabel;
 @property (nonatomic, retain) WIPList *theList;
 

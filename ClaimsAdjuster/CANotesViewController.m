@@ -18,6 +18,7 @@
 
 @implementation CANotesViewController
 @synthesize ClaimNote;
+@synthesize goToPhotoFromNotesButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,6 +38,7 @@
 - (void)viewDidUnload
 {
     [self setClaimNote:nil];
+    [self setGoToPhotoFromNotesButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -50,6 +52,7 @@
 
 - (void)dealloc {
     [ClaimNote release];
+    [goToPhotoFromNotesButton release];
     [super dealloc];
 }
 

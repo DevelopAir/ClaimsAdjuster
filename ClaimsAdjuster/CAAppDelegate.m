@@ -21,8 +21,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // To access current WIP Claims from UI Test Portal uncomment following block and 
-    // comment out local access used during local development
+    // To access current WIP Claims from UAT Test Portal uncomment following block and 
+    // comment out local access used during development
     
     /*
     //----Retrieve current WIP Claims from UI Test Portal-------

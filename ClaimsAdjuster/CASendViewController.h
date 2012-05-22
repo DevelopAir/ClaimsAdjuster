@@ -17,7 +17,7 @@
 @interface CASendViewController : UIViewController
 <MFMailComposeViewControllerDelegate>
 {
-    MFMailComposeViewController *Email;
+    MFMailComposeViewController *email;
 }
 
 -(void)emailImage:(UIImage *)image;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="wPz-w5-Nq0">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
@@ -44,19 +44,19 @@
                             <outlet property="delegate" destination="J7l-di-jQX" id="bEE-2c-bb7"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Claims To Do" id="p8Q-07-0r4"/>
+                    <navigationItem key="navigationItem" title="Claims" id="p8Q-07-0r4"/>
                     <connections>
                         <outlet property="view" destination="rcw-k2-fo3" id="0J8-kC-ikm"/>
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="614" y="-891"/>
+            <point key="canvasLocation" x="-778" y="-2563"/>
         </scene>
         <!--Detail View Controller - Edit-->
         <scene sceneID="hRN-2A-uQD">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fOt-p1-dgv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="left" id="zKm-iF-LPz"/>
+                <swipeGestureRecognizer direction="right" id="zKm-iF-LPz"/>
                 <tableViewController storyboardIdentifier="CADetailViewController" title="Edit" id="BkH-Rz-VKw" customClass="CADetailViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="XAY-fS-SBd">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
@@ -128,14 +128,22 @@
                             <outlet property="delegate" destination="BkH-Rz-VKw" id="PWw-19-zAz"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Edit" id="0sn-y5-tHS"/>
+                    <navigationItem key="navigationItem" title="Edit" id="0sn-y5-tHS">
+                        <barButtonItem key="rightBarButtonItem" title="Notes >>" id="GbX-mB-jV8">
+                            <connections>
+                                <segue destination="M9K-lm-Pq4" kind="push" identifier="segueToNotesWButton" id="Wv0-SZ-DhU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="dolLabel" destination="WQb-F3-pSw" id="J2J-Vf-tot"/>
+                        <outlet property="goToNotesFromEditButton" destination="GbX-mB-jV8" id="Xag-Xb-ze6"/>
                         <outlet property="tableView" destination="XAY-fS-SBd" id="SPP-nT-yoJ"/>
+                        <segue destination="M9K-lm-Pq4" kind="push" identifier="segueToNotesWPan" id="Afy-jg-dLe"/>
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1025" y="-891"/>
+            <point key="canvasLocation" x="-355" y="-2563"/>
         </scene>
         <!--Second View Controller - Second-->
         <scene sceneID="13">
@@ -143,11 +151,11 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="12" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="CASecondViewController" title="Second" id="3" customClass="CASecondViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="17">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="or8-M0-xcG">
-                                <rect key="frame" x="27" y="87" width="266" height="37"/>
+                                <rect key="frame" x="27" y="159" width="266" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Activate Camera">
@@ -161,20 +169,35 @@
                                     <action selector="btnActivateCameraClicked:" destination="3" eventType="touchUpInside" id="KiQ-o5-7ny"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Selected Claim" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="dJD-8C-87b">
+                                <rect key="frame" x="27" y="71" width="266" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Photo" id="6"/>
+                    <navigationItem key="navigationItem" title="Photo" id="ogN-fg-Rni">
+                        <barButtonItem key="backBarButtonItem" title="Notes" id="7UE-wT-hKs"/>
+                        <barButtonItem key="rightBarButtonItem" title="Send >>" id="k4M-NJ-x1c">
+                            <connections>
+                                <segue destination="dSq-mL-7go" kind="push" id="IIr-6v-vGn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="goToSendFromPhotoButton" destination="k4M-NJ-x1c" id="IFb-1G-wRE"/>
+                        <outlet property="selectedClaim" destination="dJD-8C-87b" id="g0J-hw-spu"/>
+                    </connections>
                 </viewController>
                 <swipeGestureRecognizer direction="left" id="8eQ-Yw-8Ts"/>
-                <swipeGestureRecognizer direction="right" id="GX0-S9-8eK">
-                    <connections>
-                        <segue destination="M9K-lm-Pq4" kind="modal" id="oe2-8f-E50"/>
-                    </connections>
-                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="GX0-S9-8eK"/>
             </objects>
-            <point key="canvasLocation" x="1025" y="-322"/>
+            <point key="canvasLocation" x="720" y="-2563"/>
         </scene>
         <!--View Controller - Send-->
         <scene sceneID="A7r-tO-1Vf">
@@ -182,7 +205,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8z3-fc-Iwd" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="CASendViewController" title="Send" id="dSq-mL-7go" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gpX-Dq-r7w">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -191,19 +214,12 @@
                         </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Send" id="AHx-Ys-zzk"/>
+                    <navigationItem key="navigationItem" title="Send" id="BLA-NS-Oiv"/>
                 </viewController>
-                <swipeGestureRecognizer direction="right" id="HlG-kQ-tbz">
-                    <connections>
-                        <segue destination="wPz-w5-Nq0" kind="modal" id="HCg-7e-HDB"/>
-                    </connections>
-                </swipeGestureRecognizer>
-                <swipeGestureRecognizer direction="left" id="D70-uD-I2r">
-                    <connections>
-                        <segue destination="M9K-lm-Pq4" kind="modal" id="561-QI-6oL"/>
-                    </connections>
-                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="HlG-kQ-tbz"/>
+                <swipeGestureRecognizer direction="left" id="D70-uD-I2r"/>
             </objects>
-            <point key="canvasLocation" x="-253" y="-99"/>
+            <point key="canvasLocation" x="1157" y="-2563"/>
         </scene>
         <!--Notes View Controller - Notes-->
         <scene sceneID="H36-6t-cFm">
@@ -211,11 +227,11 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2C4-V8-9rJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="CANotesViewController" title="Notes" id="M9K-lm-Pq4" customClass="CANotesViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4tJ-wC-uay">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Claim Notes" id="uhd-Zb-pja">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="uhd-Zb-pja">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -229,28 +245,33 @@
                         </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Notes" id="v2f-9b-gWS"/>
+                    <navigationItem key="navigationItem" title="Notes" id="yE1-Od-l7x">
+                        <barButtonItem key="rightBarButtonItem" title="Photo >>" id="EJb-f1-pff">
+                            <connections>
+                                <segue destination="3" kind="push" identifier="goToPhotoFromNotesButton" id="dpf-b3-Jbl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="ClaimNote" destination="uhd-Zb-pja" id="F4r-N2-8ei"/>
+                        <outlet property="goToPhotoFromNotesButton" destination="EJb-f1-pff" id="hmB-fQ-tqH"/>
+                        <segue destination="3" kind="push" identifier="segueToPhoto" id="wJs-Ri-UKe"/>
                     </connections>
                 </viewController>
                 <swipeGestureRecognizer direction="left" id="NlN-zT-Pi7">
                     <connections>
-                        <segue destination="3" kind="modal" id="JSW-gE-D9p"/>
+                        <segue destination="BkH-Rz-VKw" kind="push" identifier="segueFromNotesToEditWPan" id="5yT-qr-xA3"/>
                     </connections>
                 </swipeGestureRecognizer>
-                <swipeGestureRecognizer direction="right" id="G6q-Cu-B6J">
-                    <connections>
-                        <segue destination="dSq-mL-7go" kind="modal" id="Rcz-HB-H8c"/>
-                    </connections>
-                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="G6q-Cu-B6J"/>
             </objects>
-            <point key="canvasLocation" x="272" y="-114"/>
+            <point key="canvasLocation" x="167" y="-2563"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="15">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14" sceneMemberID="firstResponder"/>
-                <tabBarController id="4" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="CATabBarController" id="4" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="5">
                         <rect key="frame" x="0.0" y="431" width="320" height="49"/>
@@ -265,7 +286,7 @@
                     </connections>
                 </tabBarController>
             </objects>
-            <point key="canvasLocation" x="-638" y="-654"/>
+            <point key="canvasLocation" x="-1762" y="-1733"/>
         </scene>
         <!--Navigation Controller - Claims To Do-->
         <scene sceneID="QW8-x9-ZeD">
@@ -284,7 +305,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="211" y="-891"/>
+            <point key="canvasLocation" x="-1225" y="-2563"/>
         </scene>
     </scenes>
     <classes>
@@ -292,6 +313,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CADetailViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="dolLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="goToNotesFromEditButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>
         </class>
@@ -299,12 +321,15 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CANotesViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="ClaimNote" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="goToPhotoFromNotesButton" candidateClass="UIBarButtonItem"/>
             </relationships>
         </class>
         <class className="CASecondViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CASecondViewController.h"/>
             <relationships>
                 <relationship kind="action" name="btnActivateCameraClicked:"/>
+                <relationship kind="outlet" name="goToSendFromPhotoButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="selectedClaim" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="CATableViewController" superclassName="UITableViewController">
@@ -317,6 +342,9 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="BWt-uI-3dT"/>
+        <segue reference="LlT-2j-890"/>
+        <segue reference="Wv0-SZ-DhU"/>
+        <segue reference="dpf-b3-Jbl"/>
+        <segue reference="IIr-6v-vGn"/>
     </inferredMetricsTieBreakers>
 </document>
