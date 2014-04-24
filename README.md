@@ -6,9 +6,8 @@ Will build a selectable list of Claims to gather photographs and notes that are 
 <br>
 Technologies utilized:<br>
 ----------------------<br>
--Table View Controller<br>
 -XML Parsing<br>
 -Camera invocation<br>
 -image compression<br>
--eMail formatting<br>
+-eMail formatting/sending<br>
 
