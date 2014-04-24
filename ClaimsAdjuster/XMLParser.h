@@ -3,7 +3,7 @@
 //  XMLParser.h
 //  ClaimsAdjuster
 //
-//  Created by Paul Duncanson on 2/28/12.
+//  Created by Paul Duncanson.
 //  Copyright (c) 2012__Invigorate_Software_For_Topa_Insurance__. All rights reserved.
 //
 // Rev. History:

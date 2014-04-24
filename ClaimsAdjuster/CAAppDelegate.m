@@ -3,8 +3,8 @@
 //  CAAppDelegate.m
 //  ClaimsAdjuster
 //
-//  Created by Paul Duncanson on 2/28/12.
-//  Copyright (c) 2012 __Invigorate_Software_for_TOPA_Insurance__. All rights reserved.
+//  Created by Paul Duncanson.
+//  Copyright (c) 2012 __Invigorate_Software__. All rights reserved.
 //
 // Rev. History:
 //
@@ -12,6 +12,7 @@
 
 #import "CAAppDelegate.h"
 #import "XMLParser.h"
+//#import "TestFlight.h"
 
 @implementation CAAppDelegate
 
@@ -21,12 +22,20 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    //[TestFlight takeOff:@"241a9a02-951e-4481-b739-ade16ce9d1a7"];
+    
+    
+    //[TestFlight passCheckpoint:@"--didFinishLauchingWithOptions--"];
+    // !!!!! Move retrieval of XML data to CATableViewController's ViewDidLoad and
+    // !!!!! make use of NSURLConnection to perform internet access asynchronously
+
     // To access current WIP Claims from UAT Test Portal uncomment following block and 
     // comment out local access used during development
     
     /*
     //----Retrieve current WIP Claims from UI Test Portal-------
-    NSURL *url = [[NSURL alloc] initWithString:@"http://www.topa-portal.com/WIPClaims.xml"];
+    //NSURL *url = [[NSURL alloc] initWithString:@"http://www.topa-portal.com/WIPClaims.xml"];
     
     NSData *data = [[NSData alloc] initWithContentsOfURL:url]; 
     //----------------------------------------------------------

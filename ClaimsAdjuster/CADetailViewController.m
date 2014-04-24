@@ -3,8 +3,8 @@
 //  CADetailViewController.m
 //  ClaimsAdjuster
 //
-//  Created by Paul Duncanson on 5/6/12.
-//  Copyright (c) 2012__Invigorate_Software_For_Topa_Insurance__. All rights reserved.
+//  Created by Paul Duncanson.
+//  Copyright (c) 2012__Invigorate_Software__. All rights reserved.
 //
 // Rev. History:
 //
@@ -31,8 +31,7 @@
     return 4;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView 
- numberOfRowsInSection:(NSInteger)section 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
     return 1;
 }
@@ -55,7 +54,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:strCellIdentifier];
 		UITextField *textField = [[UITextField alloc]initWithFrame:CGRectMake(10, 0, 300, 30)];
         textField.borderStyle = UITextBorderStyleNone;
-		cell.textLabel.backgroundColor = [UIColor blackColor];
+		cell.textLabel.backgroundColor = [UIColor blackColor]; // EXC_BAD_ACCESS error here!!!
         
         // Retrieve the cross reference table index in the textField
         textField.tag = indexPath.section;
@@ -87,7 +86,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         
 		[cell.contentView addSubview:textField];
 		[textField release];
-        //[cell release];
+
     }
     return cell;
 }
@@ -102,16 +101,16 @@ titleForHeaderInSection:(NSInteger)section
 	switch(section)
 	{
 		case 0:
-			sectionName = [NSString stringWithString:@"Name"];
+			sectionName = @"Name";
 			break;
 		case 1:
-			sectionName = [NSString stringWithString:@"Cause of Loss"];
+			sectionName = @"Cause of Loss";
 			break;
 		case 2:
-			sectionName = [NSString stringWithString:@"Date of Loss"];
+			sectionName = @"Date of Loss";
 			break;
         case 3:
-			sectionName = [NSString stringWithString:@"Policy"];
+			sectionName = @"Policy";
 			break;
 	}
 	
@@ -178,7 +177,7 @@ titleForHeaderInSection:(NSInteger)section
     
     [dateFormatter setDateFormat:@"MM/dd/yyyy"];
     
-//    [_dolField setText:[dateFormatter stringFromDate:self.dolDate]];
+  
     
     [dateFormatter release];
     
@@ -239,26 +238,44 @@ titleForHeaderInSection:(NSInteger)section
 -(IBAction)textFieldDone:(id)sender{	
 }
 
+- (void)viewDidUnload {
+    [_dolDate release];
+    [_dolLabel release];    
+    [dateSheet release];
+    [theList release];
+    [tableView release];
+    [goToNotesFromEditButton release];
+    [super viewDidUnload];
+}
+
 #pragma mark Memory Management
 
 - (void)didReceiveMemoryWarning
 {
     NSLog(@"Received memory use warning in CADetailViewController");
-    
     [super didReceiveMemoryWarning];
-}
+    if ([self isViewLoaded] && self.view.window == nil)
+    {
+        self.view = nil;
 
-- (void)viewDidUnload {
-    [_dolDate release];
-    //  [_dolField release];
-    [_dolLabel release];    
-    [dateSheet release];
-    [_dolDate release]; 
-    [theList release];
-    [tableView release];
-    
-    [self setGoToNotesFromEditButton:nil];
-    [super viewDidUnload];
+        [_dolDate release];
+        _dolDate = nil;
+        
+        [_dolLabel release];
+        _dolLabel = nil;
+        
+        [dateSheet release];
+        dateSheet = nil;
+        
+        [theList release];
+        theList = nil;
+        
+        [tableView release];
+        tableView = nil;
+        
+        [goToNotesFromEditButton release];
+
+    }
 }
 
 - (void) dealloc
@@ -271,13 +288,6 @@ titleForHeaderInSection:(NSInteger)section
     
     [dateSheet release];
     dateSheet = nil;
-    
-    [_dolDate release];
-    _dolDate = nil;
-    
-    //  [_dolField release];
-    [_dolLabel release];
-    _dolLabel = nil;
     
     [theList release];
     theList = nil;

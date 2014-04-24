@@ -3,8 +3,8 @@
 //  CANotesViewController.m
 //  ClaimsAdjuster
 //
-//  Created by Paul Duncanson on 5/14/12.
-//  Copyright (c) 2012 __Invigorate_Software_for_TOPA_Insurance__. All rights reserved.
+//  Created by Paul Duncanson.
+//  Copyright (c) 2012 __Invigorate_Software__. All rights reserved.
 //
 // Rev. History:
 //
@@ -17,14 +17,16 @@
 @end
 
 @implementation CANotesViewController
-@synthesize ClaimNote;
+
+@synthesize claimNote;
 @synthesize goToPhotoFromNotesButton;
+@synthesize theList;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        self.claimNote.text = self.theList.notes;
     }
     return self;
 }
@@ -32,15 +34,34 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+    NSNumber *rowSelected = nil;
+    
+    if (standardUserDefaults)
+        rowSelected = [standardUserDefaults objectForKey:@"rowSelected"];
+    
+    iRowSelected = [rowSelected intValue];
+    
+    self.app = [[UIApplication sharedApplication] delegate];
+    
+    self.theList = [self.app.listArray objectAtIndex:iRowSelected];
+    
+    claimNote.delegate = self;
+    
+    [self.view addSubview:claimNote];   
+    
+    self.claimNote.text = self.theList.notes;
+    
+    self.claimId.text = [self.theList.policy stringByAppendingString:@"/"];
+    self.claimId.text = [self.claimId.text stringByAppendingString:self.theList.name];
+    
+    bTextChanged = NO;
 }
 
-- (void)viewDidUnload
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
-    [self setClaimNote:nil];
-    [self setGoToPhotoFromNotesButton:nil];
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
+    return YES;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -48,11 +69,49 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (void)textViewDidChange:(UITextView *)textView
+{
+    bTextChanged = YES;
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    if (bTextChanged == YES)
+    {
+      self.theList.notes = self.claimNote.text;
+    
+      [self.app.listArray replaceObjectAtIndex:iRowSelected withObject:self.theList];
+    }
+}
+
+- (void)viewDidUnload
+{
+    [self setClaimNote:nil];
+    [self setGoToPhotoFromNotesButton:nil];
+    self.theList = nil;
+    [super viewDidUnload];
+}
+
 #pragma mark Memory Management
 
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    if ([self isViewLoaded] && self.view.window == nil)
+    {
+        self.view = nil;
+        [claimNote release];
+        claimNote = nil;
+        [goToPhotoFromNotesButton release];
+        goToPhotoFromNotesButton = nil;
+        self.theList = nil;
+    }
+}
+
 - (void)dealloc {
-    [ClaimNote release];
+    [claimNote release];
     [goToPhotoFromNotesButton release];
+    [_claimId release];
     [super dealloc];
 }
 

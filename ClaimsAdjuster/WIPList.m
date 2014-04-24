@@ -3,7 +3,7 @@
 //  WIPList.m
 //  ClaimsAdjuster
 //
-//  Created by Paul Duncanson on 2/28/12.
+//  Created by Paul Duncanson.
 //  Copyright (c) 2012__Invigorate_Software_For_Topa_Insurance__. All rights reserved.
 //
 // Rev. History:
@@ -14,14 +14,18 @@
 
 @implementation WIPList
 
-@synthesize name, cause, dol, policy, listID, premCodes;
+@synthesize name, cause, dol, policy, listID, premCodes, notes, toAddress, toName, imageNames;
 
--(id) :(NSString *)
-        edtName : 
+-(id) : (NSString *)
+        edtName : (NSString *)
         edtCause : (NSString *) 
         edtDol : (NSString *)
         edtPolicy : (NSString *) 
-        edtPremCodes 
+        edtPremCodes : (NSString *)
+        edtNotes : (NSString *)
+        edtToAddress : (NSString *)
+        edtToName : (NSString *)
+        edtImageNames
 {
     
     self = [super init];
@@ -31,6 +35,10 @@
         self.dol = edtDol;
         self.policy = edtPolicy;
         self.premCodes = edtPremCodes;
+        self.notes = edtNotes;
+        self.toAddress = edtToAddress;
+        self.toName = edtToName;
+        self.imageNames = edtImageNames;
     }
     return self;
 }

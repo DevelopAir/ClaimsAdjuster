@@ -3,8 +3,8 @@
 //  CATableViewController.m
 //  ClaimsAdjuster
 //
-//  Created by Paul Duncanson on 2/28/12.
-//  Copyright (c) 2012__Invigorate_Software_For_Topa_Insurance__. All rights reserved.
+//  Created by Paul Duncanson.
+//  Copyright (c) 2012__Invigorate_Software__. All rights reserved.
 //
 // Rev. History:
 //
@@ -12,7 +12,6 @@
 
 #import "CATableViewController.h"
 #import "CADetailViewController.h"
-#import "WIPList.h"
 
 @implementation CATableViewController
 
@@ -78,8 +77,6 @@
     
     theList = [app.listArray objectAtIndex:indexPath.row];
     
-    //app.currentIdx = [[NSInteger.alloc]init ][indexPath.row integer_t];
-    
     cell.textLabel.text = theList.name;    
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
@@ -88,6 +85,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+    
+    if (standardUserDefaults) {
+        [standardUserDefaults setObject:[NSNumber numberWithInt:indexPath.row] forKey:@"rowSelected"];
+        [standardUserDefaults synchronize];
+    }
+    
     CADetailViewController *detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"CADetailViewController"];
     
     detailViewController.theList = [app.listArray objectAtIndex:indexPath.row];
@@ -98,26 +102,39 @@
 {
 }
 
-#pragma mark Memory Management
-
-- (void)didReceiveMemoryWarning
-{
-    NSLog(@"Received memory use warning in CATableViewController");
-    [super didReceiveMemoryWarning];
-}
-
 - (void)viewDidUnload
 {
-    //[app release];
+    [app release];
     [theList release];
     [_detailViewController release];
     [super viewDidUnload];
 }
 
+#pragma mark Memory Management
+
+- (void)didReceiveMemoryWarning
+{
+    NSLog(@"Received memory use warning in CADetailViewController");
+    [super didReceiveMemoryWarning];
+    if ([self isViewLoaded] && self.view.window == nil)
+    {
+        self.view = nil;
+        
+        [app release];
+        app = nil;
+        
+        [theList release];
+        theList = nil;
+        
+        [_detailViewController release];
+        _detailViewController = nil;
+    }
+}
+
 - (void) dealloc
 {
-    //[app release];
-    //app = nil;
+    [app release];
+    app = nil;
     
     [theList release];
     theList = nil;
@@ -127,5 +144,4 @@
     
     [super dealloc];
 }
-
 @end

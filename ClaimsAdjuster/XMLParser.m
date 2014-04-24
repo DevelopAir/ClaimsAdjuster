@@ -30,6 +30,8 @@
     (NSString *)qName attributes:
     (NSDictionary *)attributeDict{
     
+    NSString *fieldName;
+    
     if ([elementName isEqualToString:@"Claims"]) {
         
         app.listArray = [[NSMutableArray alloc] init];
@@ -40,6 +42,17 @@
         
         theList.listID = [[attributeDict objectForKey:@"id"] integerValue];
         
+    }
+    else {
+        
+        fieldName = [attributeDict objectForKey:@"fieldName"];
+        
+        NSUserDefaults *userDefault=[NSUserDefaults standardUserDefaults];
+        
+        NSString *fieldNameValue = [userDefault objectForKey:[@"fn_" stringByAppendingString:elementName]];
+        if (fieldNameValue == nil) {
+            [userDefault setObject:fieldName forKey:[@"fn_" stringByAppendingString:elementName]];
+        }
     }
 }
 
@@ -60,6 +73,7 @@
     (NSString *)qName{
     
     if ([elementName isEqualToString:@"Claims"]) {
+
         return;
     }
     
